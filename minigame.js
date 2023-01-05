@@ -1,6 +1,6 @@
 
 
-
+console.log("STOP LOOKING HERE PLEASE :( i already said i didnt know what i was doing")
 
 const pIcos = ["pred", "pblue", "pgreen", "pyellow", "porange", "ppurple"];
 const cIcos = ["cred", "cblue", "cgreen", "cyellow", "corange", "cpurple"];
@@ -20,8 +20,8 @@ const bgColors = [];
 const imageArr = [];
 
 let currentIndex = null;
-let timeoutRefresh = null;
-
+let timeout = null;
+let keyD = false;
 
 function cycle(){
 	for (let i=0; i<15; i++) {
@@ -106,21 +106,24 @@ function cycleRight(i) {
                 boxEnter();
             }
 		});
-		timeoutRefresh = setTimeout(function(){
-			window.location.reload();
-		}, 3200);
 	    currentIndex = i;
 		console.log(i);
+		console.log("next answer: " + answerOrder[currentIndex][2]);
+		keyD = false;
+		timeout = setTimeout(function() {
+			window.location.reload();
+		}, 3000);
 }
 
+
 function boxEnter(){
-	console.log(answerOrder[currentIndex][2]);
-	console.log(document.getElementById("inputBox").value.toLowerCase());
+	if (keyD != true) {
 	if (document.getElementById("inputBox").value.toLowerCase() == answerOrder[currentIndex][2])
 		{
+			keyD = true;
 			document.getElementById("imgtwo").src = "images/correct.png";
 			document.getElementById("textdisplay").innerHTML = "CORRECT!";
-			clearTimeout(timeoutRefresh);
+			clearTimeout(timeout);
 			if (currentIndex != 2)
 				{
 					setTimeout(function(){
@@ -134,7 +137,9 @@ function boxEnter(){
 			}
 		}
 	else window.location.reload();
+	}
 	document.getElementById("inputBox").value = "";
+	
 }
 
 
