@@ -29,7 +29,7 @@ function cycle(){
 	}
 	document.getElementById("srtBtn").remove();
 	document.getElementById("textdisplay").innerHTML = "DECRYPTING...";
-	setTimeout(setData, 300 * 16);
+	setTimeout(setData, 200 * 16);
 }
 
 function task(i) {
@@ -41,7 +41,7 @@ function task(i) {
 	  document.getElementById(shuffled[1]).style = cssColors[Math.floor(Math.random()*cssColors.length)];
 	  document.getElementById(shuffled[2]).src = "images/" + tIcos[Math.floor(Math.random()*tIcos.length)] + ".png";
 	  document.getElementById(shuffled[2]).style = cssColors[Math.floor(Math.random()*cssColors.length)];
-  }, 300 * i);
+  }, 200 * i);
 }
 
 
